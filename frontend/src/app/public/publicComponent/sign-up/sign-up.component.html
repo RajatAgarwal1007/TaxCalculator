@@ -1,0 +1,40 @@
+<div class="container mt-4 centerForm">
+    <div class="card d-flex" style="padding: 20px;">
+        <form #SignUpForm="ngForm" (ngSubmit)="signUp(SignUpForm.value)">
+            <div class="form-group">
+                <label for="userName">User Name</label>
+                <input type="text" class="form-control" ngModel name="userName" id="userName"
+                    aria-describedby="emailHelp" placeholder="Enter userName">
+            </div>
+            <div class="form-group">
+                <label for="userFirstName">First Name</label>
+                <input type="text" class="form-control" ngModel name="userFirstName" id="userFirstName"
+                    aria-describedby="emailHelp" placeholder="Enter First Name">
+            </div>
+            <div class="form-group">
+                <label for="userLastName">Last Name</label>
+                <input type="text" class="form-control" ngModel name="userLastName" id="userLastName"
+                    aria-describedby="emailHelp" placeholder="Enter Last Name">
+            </div>
+            <div class="form-group">
+                <label for="userPassword">Password</label>
+                <input type="password" class="form-control" ngModel name="userPassword" id="userPassword"
+                    placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" ngModel name="email" id="email"
+                    placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="number" class="form-control" ngModel name="phone" id="phone"
+                    placeholder="Phone Number">
+            </div>
+
+            <button type="submit" class="btn btn-outline-primary my-2">Sign Up</button>
+        </form>
+    </div>
+</div>

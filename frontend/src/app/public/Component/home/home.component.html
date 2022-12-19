@@ -1,0 +1,30 @@
+<nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+
+        <h1>
+            <a routerLink="" style="color: white;">Tax Calculator</a>
+        </h1>
+        <div class="d-flex">
+            <div class="list-group">
+                <button class="btn list-group-item mx-1 bg-light " routerLink="/zones">Zones</button>
+                <button class="btn list-group-item mx-1 bg-light" routerLink="/states">States</button>
+                <button class="btn list-group-item mx-1 bg-light" routerLink="/calTax"
+                    *ngIf="userService.roleMatch(['Admin'])">Taxes</button>
+                <button class="btn list-group-item mx-1 bg-light" routerLink="/userList"
+                    *ngIf="userService.roleMatch(['Admin'])">Users</button>
+                <button class="btn list-group-item mx-1 bg-light" routerLink="/tax"
+                    *ngIf="userService.roleMatch(['User'])">Calculate Tax</button>
+                <button class="btn list-group-item mx-1 bg-primary" routerLink="/adminDashboard"
+                    *ngIf="userService.roleMatch(['Admin'])">Admin DashBoard</button>
+                <button class="btn list-group-item mx-1 bg-primary" routerLink="/userDashboard"
+                    *ngIf="userService.roleMatch(['User'])">User DashBoard</button>
+                <button *ngIf="!isLoggedIn()" class="btn list-group-item ml-4 bg-success" style="color: white;"
+                    routerLink="/login">Login</button>
+                <button *ngIf="!isLoggedIn()" class="btn list-group-item ml-2 bg-primary" style="color: white;"
+                    routerLink="/signUp">Sign Up</button>
+                <button *ngIf="isLoggedIn()" class="btn list-group-item mx-4 bg-danger" (click)="logOut()"
+                    style="color: white;">Logout</button>
+            </div>
+        </div>
+    </div>
+</nav>

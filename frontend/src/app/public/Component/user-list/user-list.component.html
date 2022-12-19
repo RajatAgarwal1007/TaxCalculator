@@ -1,0 +1,117 @@
+<div class="container mt-4" id="main-container">
+  <div class="card">
+    <div class="container-fluid">
+      <h3 class="text-center mt-2">User List</h3>
+      <div class="card-body">
+        <table class="table table-striped mt-2">
+          <thead>
+            <th>User Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th *ngIf="userService.roleMatch(['Admin'])">Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.userName }}</td>
+              <td>{{ user.userFirstName }}</td>
+              <td>{{ user.userLastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>
+                <button
+                  *ngIf="userService.roleMatch(['Admin'])"
+                  (click)="onEdit(user)"
+                  class="btn btn-info"
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Edit
+                </button>
+                <button
+                  *ngIf="userService.roleMatch(['Admin'])"
+                  (click)="deleteUser(user)"
+                  class="btn btn-danger mx-2"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formValue">
+          <div class="form-group">
+            <label for="userName">User Name</label>
+            <input
+              type="text"
+              formControlName="userName"
+              class="form-control"
+              id="userName"
+              aria-describedby="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="userFirstName">First Name</label>
+            <input
+              type="text"
+              formControlName="userFirstName"
+              class="form-control"
+              id="userFirstName"
+            />
+          </div>
+          <div class="form-group">
+            <label for="userLastName">Last Name</label>
+            <input
+              type="text"
+              formControlName="userLastName"
+              class="form-control"
+              id="userLastName"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" (click)="updateUser()" class="btn btn-primary">
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

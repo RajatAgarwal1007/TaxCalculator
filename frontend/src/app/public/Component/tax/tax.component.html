@@ -1,0 +1,118 @@
+<div class="container mt-4 centerForm">
+    <div class="card d-flex">
+        <div class="container-fluid">
+            <h3 class="text-center mt-2 mb-2">Tax Info</h3>
+            <form #taxForm="ngForm" (ngSubmit)="getTaxFormData(taxForm.value)">
+                <!-- <input type="text"  ngModel name="name" placeholder="Enter Name" #name="ngModel" required minlength="4">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger"
+                    style="color: red;">
+                    <div *ngIf="name.errors?.['required']">
+                        Name is required.
+                    </div>
+                    <div *ngIf="name.errors?.['minlength']">
+                        Name must be at least 4 characters long.
+                    </div>
+                </div> -->
+
+
+                <span>{{UserName}}</span>
+                <br><br>
+
+
+                <!-- <input type="number" ngModel name="phone" placeholder="Enter phone" #phone="ngModel" required
+                    min="1000000000" max="9999999999">
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert alert-danger"
+                    style="color: red;">
+
+                    <div *ngIf="phone.errors?.['required']">
+                        Phone Number is required.
+                    </div>
+                    <div *ngIf="phone.errors?.['min']">
+                        Phone Number must be 10 digit long.
+                    </div>
+                    <div *ngIf="phone.errors?.['max']">
+                        Phone Number must be 10 digit long.
+                    </div>
+
+                </div> -->
+                <span>{{user.phone}}</span>
+                <br><br>
+
+
+                <!-- <input type="text" ngModel name="email" placeholder="Enter Email" #email="ngModel" email required>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger"
+                    style="color: red;">
+
+                    <div *ngIf="email.errors?.['required']">
+                        email is required.
+                    </div>
+                    <div *ngIf="email.errors?.['email']">
+                        email is not valid
+                    </div>
+
+                </div> -->
+                <span>{{user.email}}</span>
+                <br><br>
+
+
+                <input type="number" ngModel name="amount" placeholder="Enter Amount" #amount="ngModel" required
+                    min="500">
+                <br><br>
+                <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger"
+                    style="color: red;">
+
+                    <div *ngIf="amount.errors?.['required']">
+                        Amount is required.
+                    </div>
+                    <div *ngIf="amount.errors?.['min']">
+                        amount must be more than 500 Rupee.
+                    </div>
+
+                </div>
+
+
+                <select ngModel name="stateId" #stateId="ngModel" required>
+                    <option value="" disabled selected hidden>Select State</option>
+                    <option [value]="state.id" *ngFor="let state of states">
+                        {{state.name}}
+                    </option>
+                </select>
+
+
+                <br><br>
+                <div *ngIf="stateId.invalid && (stateId.dirty || stateId.touched)" class="alert alert-danger"
+                    style="color: red;">
+
+                    <div *ngIf="stateId.errors?.['required']">
+                        State is required.
+                    </div>
+
+                </div>
+
+                <select ngModel name="zoneId" #zoneId="ngModel" required>
+                    <option value="" disabled selected hidden>Select Zone</option>
+                    <option *ngFor="let zone of zones" [value]="zone.id">
+                        {{zone.name}}
+                    </option>
+                </select>
+
+
+                <br><br>
+                <div *ngIf="zoneId.invalid && (zoneId.dirty || zoneId.touched)" class="alert alert-danger"
+                    style="color: red;">
+
+                    <div *ngIf="zoneId.errors?.['required']">
+                        Zone is required.
+                    </div>
+
+                </div>
+
+
+                <button [disabled]="taxForm.invalid">Calculate</button>
+                <br>
+                <br>
+                <label>Calculated Tax : {{calculatedTax}}</label>
+            </form>
+        </div>
+    </div>
+</div>
